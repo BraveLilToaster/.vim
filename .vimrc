@@ -10,8 +10,10 @@ filetype plugin on
 
 " THEME & LAYOUT
 colorscheme molokai
+let g:molokai_original = 1
+set term=screen-256color
 set guifont=Menlo\ Regular:h18
-" set lines=35 columns=150
+  " set lines=35 columns=150
 set colorcolumn=90
 set number
 syntax on
@@ -30,10 +32,6 @@ autocmd BufWritePre * :%s/\s\+$//e " Remove whitespaces on save
 " SEARCH
 set hlsearch " Hightlighted search
 nnoremap <silent> <BS> :nohlsearch<Bar>:echo<CR>
-
-" Color Settings
-set t_Co=256
-let g:rehash256 = 1
 
 " Reload vimrc
 map <leader>s :source ~/.vimrc<CR>
