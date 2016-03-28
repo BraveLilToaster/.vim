@@ -1,31 +1,42 @@
-runtime vimrc
+" LOADING
 execute pathogen#infect()
+
+" LEADER
+let mapleader=" "
+
+" FILE TYPES
+filetype on
+filetype plugin on
+
+" THEME & LAYOUT
+colorscheme molokai
+set guifont=Menlo\ Regular:h18
+" set lines=35 columns=150
+set colorcolumn=90
+set number
 syntax on
-filetype plugin indent on
+let g:gitgutter_sign_column_always=1 " Always show gitgutter
+
+" TEXT FORMATTING
+filetype indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set number
-set guifont=Menlo\ Regular:h18
 set mouse=a
+set smartindent
+set autoindent
+autocmd BufWritePre * :%s/\s\+$//e " Remove whitespaces on save
+
+" SEARCH
+set hlsearch " Hightlighted search
+nnoremap <silent> <BS> :nohlsearch<Bar>:echo<CR>
 
 " Color Settings
 set t_Co=256
-colorscheme molokai
 let g:rehash256 = 1
-
-" Leader Key
-let mapleader=" "
 
 " Reload vimrc
 map <leader>s :source ~/.vimrc<CR>
-
-" Remove Whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Hightlighted search
-set hlsearch
-nnoremap <silent> <BS> :nohlsearch<Bar>:echo<CR>
 
 " Reindex all files for command-t search
 noremap <Leader>r :CommandTFlush<CR>
@@ -35,16 +46,4 @@ let NERDTreeMapActivateNode='<right>'
 let NERDTreeShowHidden=1
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>j :NERDTreeFind<CR>
-autocmd VimEnter * NERDTree
-" for windows?
-" autocmd VimEnter * wincmd p
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-
-" Always show gitgutter
-let g:gitgutter_sign_column_always=1
-
-
-" vim-haml (also sass)
-au FileType javascript setl sw=2 sts=2 et
-
-set backspace=indent,eol,start

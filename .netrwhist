@@ -1,10 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =1
 let g:netrw_dirhist_1='/home/blake/.vim'
-let g:netrw_dirhist_2='/home/blake/.vim/colors'
-let g:netrw_dirhist_3='/home/blake/.vim'
-let g:netrw_dirhist_4='/home/blake/.vim/bundle'
-let g:netrw_dirhist_5='/home/blake/.vim'
-let g:netrw_dirhist_6='/home/blake'
-let g:netrw_dirhist_7='/home'
-let g:netrw_dirhist_8='/'
