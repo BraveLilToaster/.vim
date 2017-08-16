@@ -10,6 +10,10 @@ Install Plugins
         $ git submodule init
         $ git submodule update
 
+Update all Plugins
+
+        $ git submodule foreach git pull origin master
+
 To add a new plugin
 
         $ cd ~/.vim
