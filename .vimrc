@@ -26,6 +26,11 @@ filetype plugin on
 " Mouse on
 set mouse=a
 
+" Copy from vim to clipboard
+" Must make certain that +clipboard is enabled
+" :echo has('clipboard')
+set clipboard=unnamedplus
+
 """""""""""""""""""""""""""""""
 " THEME & LAYOUT
 """""""""""""""""""""""""""""""
@@ -39,8 +44,9 @@ set term=screen-256color
 set guifont=Menlo\ Regular:h18
 set colorcolumn=90
 set number
-syntax on
-let g:gitgutter_sign_column_always=1 " Always show gitgutter
+
+" Always show gitgutter
+let g:gitgutter_sign_column_always=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " TEXT FORMATTING
