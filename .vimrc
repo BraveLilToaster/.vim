@@ -31,9 +31,9 @@ set mouse=a
 " :echo has('clipboard')
 set clipboard=unnamedplus
 
-"""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
 " THEME & LAYOUT
-"""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax on
 
@@ -104,6 +104,7 @@ nmap <leader>j :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree Settings
+" vim-jsx Settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-let g:CommandTCancelMap='<ESC>'
+" Syntax highlighting for files with .js extension
+let g:jsx_ext_required = 0
