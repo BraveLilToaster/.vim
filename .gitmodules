@@ -28,9 +28,17 @@
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
+  ignore = dirty
 [submodule "vim-jsx"]
 	path = vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:vim-syntastic/syntastic.git
+[submodule "bundle/tern_for_vim"]
+	path = bundle/tern_for_vim
+	url = git@github.com:ternjs/tern_for_vim.git
+  ignore = dirty

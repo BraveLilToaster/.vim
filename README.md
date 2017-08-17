@@ -17,8 +17,12 @@ Update all Plugins
 To add a new plugin
 
         $ cd ~/.vim
-        $ git submodule add git@source/pluginname.git bundle/pluginname
+        $ git submodule add -f git@source/pluginname.git bundle/pluginname
 
-To set up command-t
+To set up YCM
 
-        $ cd ~/.vim/bundle/command-t/ruby/command-t && ruby extconf.rb && make
+        $ cd ~./vim/bundle/YouCompleteMe && git submodule update --init --recursive
+        $ ./install.py --tern-completer
+
+To set up Tern for Vim
+        $ cd ~./vim/bundle/tern_for_vim && npm install

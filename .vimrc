@@ -13,11 +13,11 @@ let mapleader=" "
 " Reload vimrc
 map <leader>s :source ~/.vimrc<CR>
 
-" Reindex all files for command-t search
-noremap <Leader>r :CommandTFlush<CR>
-
 " Automatically update a file if it is changed externally
 set autoread
+
+" Enable syntax highlighting
+syntax on
 
 " FILE TYPES
 filetype on
@@ -32,21 +32,16 @@ set mouse=a
 set clipboard=unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" THEME & LAYOUT
+" THEME
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax on
-
 " Set Theme
 colorscheme molokai
 let g:molokai_original = 1
 set term=screen-256color
 set guifont=Menlo\ Regular:h18
+
 set colorcolumn=90
 set number
-
-" Always show gitgutter
-let g:gitgutter_sign_column_always=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " TEXT FORMATTING
@@ -104,7 +99,27 @@ nmap <leader>j :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""
+" GIT GUTTER
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show gitgutter
+let g:gitgutter_sign_column_always=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-jsx Settings
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting for files with .js extension
 let g:jsx_ext_required = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['jshint', 'gjslint']
