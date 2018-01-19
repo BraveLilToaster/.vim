@@ -31,6 +31,8 @@ set mouse=a
 " :echo has('clipboard')
 set clipboard=unnamedplus
 
+" watch vimrc for chnages and update vim on the fly
+autocmd BufWritePost .vimrc so %
 """""""""""""""""""""""""""""""""""""""""""""""""
 " THEME
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -39,9 +41,6 @@ colorscheme molokai
 let g:molokai_original = 1
 set term=screen-256color
 set guifont=Menlo\ Regular:h18
-
-set colorcolumn=90
-set number
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " TEXT FORMATTING
@@ -52,6 +51,10 @@ set expandtab
 
 set si "smartindent
 set ai "autoindent
+
+"
+set colorcolumn=90
+set number
 
 " enable filetype specific indentation
 filetype indent on
@@ -81,6 +84,14 @@ function! XTermPasteBegin()
 endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+" easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+autocmd FileType php setlocal autoindent
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH
