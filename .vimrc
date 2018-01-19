@@ -1,8 +1,25 @@
 """"""""""""""""""""""""""""""""""""""""""""""""
-" Execute Pathogen
+" vim-plug
 """"""""""""""""""""""""""""""""""""""""""""""""
-execute pathogen#infect()
-set nocompatible
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+
+" Language support and syntax highlighting
+Plug 'vim-syntastic/syntastic'
+"Plug 'pangloss/vim-javascript'
+"Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " General Configuration
