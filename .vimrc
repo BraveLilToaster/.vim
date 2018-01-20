@@ -130,7 +130,7 @@ let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 " GIT GUTTER
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Always show gitgutter
-let g:gitgutter_sign_column_always=1
+set signcolumn=yes
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " vim-jsx Settings
