@@ -8,16 +8,22 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+" Navigation and Status Bar
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
+
+" git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
+" IDE like functions
+Plug 'vim-syntastic/syntastic'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
-" Language support and syntax highlighting
-Plug 'vim-syntastic/syntastic'
-"Plug 'pangloss/vim-javascript'
-"Plug 'elzr/vim-json'
+" JavaScript syntax
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
 Plug 'mxw/vim-jsx'
 call plug#end()
 
@@ -50,6 +56,9 @@ set clipboard=unnamedplus
 
 " watch vimrc for chnages and update vim on the fly
 autocmd BufWritePost .vimrc so %
+
+"
+set timeoutlen=1000 ttimeoutlen=0
 """""""""""""""""""""""""""""""""""""""""""""""""
 " THEME
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,13 +127,68 @@ set ignorecase
 nnoremap <silent> <BS> :nohlsearch<Bar>:echo<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree Settings
+" NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeMapActivateNode='<right>'
 let NERDTreeShowHidden=1
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>j :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" YCM
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Start autocompletion after 4 chars
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_highlighting = 0
+" Don't show YCM's preview window [ I find it really annoying ]
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-lightline
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+let g:lightline = {
+ \ 'active': {
+ \   'left': [ [ 'mode', 'paste' ],
+ \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+ \ },
+ \ 'component': {
+ \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
+ \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+ \   'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}'
+ \ },
+ \ 'component_function': {
+ \   'filetype': 'MyFiletype',
+ \   'fileformat': 'MyFileformat',
+ \ },
+ \ 'component_visible_condition': {
+ \   'readonly': '(&filetype!="help"&& &readonly)',
+ \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+ \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+ \ },
+ \ 'separator': { 'left': '', 'right': '' },
+ \ 'subseparator': { 'left': '', 'right': '' }
+ \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-devicons
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf8
+set guifont=Knack\ Nerd\ Font\ Regular\ 11
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " GIT GUTTER
@@ -150,4 +214,4 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['jshint', 'gjslint']
+let g:syntastic_javascript_checkers = ['eslint']
