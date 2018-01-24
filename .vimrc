@@ -15,6 +15,7 @@ Plug 'ryanoasis/vim-devicons'
 
 " git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 
 " IDE like functions
@@ -36,7 +37,7 @@ call plug#end()
 let mapleader=" "
 
 " Reload vimrc
-map <leader>s :source ~/.vimrc<CR>
+map <leader>s :autocmd BufWritePost ~/.vimrc source %<CR>
 
 " Automatically update a file if it is changed externally
 set autoread
@@ -66,9 +67,9 @@ set timeoutlen=1000 ttimeoutlen=0
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Set Theme
 colorscheme molokai
-let g:molokai_original = 1
-set term=screen-256color
-set guifont=Menlo\ Regular:h18
+let g:rehash256 = 1
+set t_Co=256
+set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " TEXT FORMATTING
@@ -136,7 +137,6 @@ let NERDTreeShowHidden=1
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>j :NERDTreeFind<CR>
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " YCM
