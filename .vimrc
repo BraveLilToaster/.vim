@@ -34,7 +34,7 @@ call plug#end()
 " General Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""
 " LEADER
-let mapleader=" "
+let mapleader="\<Space>"
 
 " Reload vimrc
 map <leader>s :autocmd BufWritePost ~/.vimrc source %<CR>
