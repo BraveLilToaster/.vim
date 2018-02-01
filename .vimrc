@@ -62,6 +62,9 @@ autocmd BufWritePost .vimrc so %
 
 "
 set timeoutlen=1000 ttimeoutlen=0
+
+" Fix for webpack watch on vim files
+set backupcopy=yes
 """""""""""""""""""""""""""""""""""""""""""""""""
 " THEME
 """""""""""""""""""""""""""""""""""""""""""""""""
