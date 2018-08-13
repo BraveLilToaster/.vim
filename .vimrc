@@ -22,7 +22,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'vim-syntastic/syntastic'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 
 " JavaScript syntax
 Plug 'pangloss/vim-javascript'
@@ -65,6 +71,7 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " Fix for webpack watch on vim files
 set backupcopy=yes
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " THEME
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -144,16 +151,16 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""
-" YCM
+"ncm2
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Start autocompletion after 4 chars
-let g:ycm_min_num_of_chars_for_completion = 4
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_enable_diagnostic_highlighting = 0
-" Don't show YCM's preview window [ I find it really annoying ]
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " vim-closetag
