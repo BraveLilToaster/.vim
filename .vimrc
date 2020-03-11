@@ -29,6 +29,7 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " JavaScript syntax
 Plug 'pangloss/vim-javascript'
@@ -133,6 +134,12 @@ nnoremap <C-H> <C-W><C-H>
 autocmd FileType php setlocal autoindent
 
 """""""""""""""""""""""""""""""""""""""""""""""""
+" Prettier
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH
 """""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch " Hightlighted search
@@ -224,9 +231,6 @@ function! MyFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
-function! MyFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " GIT GUTTER
